@@ -1,15 +1,14 @@
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-    vector<int> sortedNums = nums;
-    sort(sortedNums.begin(), sortedNums.end());
+    sort(nums.begin(), nums.end());
 
     int maxCount = 1;
     int currentCount = 1;
-    int mostFrequentElement = sortedNums[0];
+    int mostFrequentElement = nums[0];
 
-    for (size_t i = 1; i < sortedNums.size(); ++i) {
-        if (sortedNums[i] == sortedNums[i - 1]) {
+    for (size_t i = 1; i < nums.size(); ++i) {
+        if (nums[i] == nums[i - 1]) {
             currentCount++;
         } else {
             currentCount = 1;
@@ -17,7 +16,7 @@ public:
 
         if (currentCount > maxCount) {
             maxCount = currentCount;
-            mostFrequentElement = sortedNums[i];
+            mostFrequentElement = nums[i];
         }
     }
 
