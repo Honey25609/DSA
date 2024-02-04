@@ -3,23 +3,23 @@ public:
     int majorityElement(vector<int>& nums) {
     sort(nums.begin(), nums.end());
 
-    int maxCount = 1;
-    int currentCount = 1;
-    int mostFrequentElement = nums[0];
+    int max = 1;
+    int count = 1;
+    int most = nums[0];
 
-    for (size_t i = 1; i < nums.size(); ++i) {
+    for (int i = 1; i < nums.size(); ++i) {
         if (nums[i] == nums[i - 1]) {
-            currentCount++;
+            count++;
         } else {
-            currentCount = 1;
+            count = 1;
         }
 
-        if (currentCount > maxCount) {
-            maxCount = currentCount;
-            mostFrequentElement = nums[i];
+        if (count > max) {
+            max = count;
+            most = nums[i];
         }
     }
 
-    return mostFrequentElement;
+    return most;
     }
 };
