@@ -8,9 +8,7 @@ public:
         for(int i=0;i<ransomNote.length();i++){
             if(map[ransomNote[i]]==0) return flag;
             map[ransomNote[i]]--;
-        }
-        for(auto i:map) sum+=i.second;
-        
+        }        
         return true;
     }
 };
