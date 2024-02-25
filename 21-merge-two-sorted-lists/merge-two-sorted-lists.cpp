@@ -14,24 +14,37 @@ public:
         if (list1 == nullptr) return list2;
         if (list2 == nullptr) return list1;
 
-        ListNode* dummy = new ListNode(-1);
-        ListNode* current = dummy;
+        ListNode* Newlist = new ListNode(0);
+        ListNode* current = Newlist;
 
-        while (list1 != nullptr && list2 != nullptr) {
+        while(list1!=nullptr && list2!=nullptr){
             if (list1->val <= list2->val) {
                 current->next = list1;
+                list1=list1->next;
+            }
+            else{
+                current->next= list2;
+                list2=list2->next;
+            }
+            current=current->next;
+        }
+        if(list1!=nullptr){
+            while(list1!=nullptr){
+                current->next = list1;
                 list1 = list1->next;
-            } else {
+                current = current->next;
+            }
+        }
+        if(list2!=nullptr){
+            while(list2!=nullptr){
                 current->next = list2;
                 list2 = list2->next;
+                current = current->next;
             }
-            current = current->next;
         }
-
-        current->next = (list1 != nullptr) ? list1 : list2;
-
-        ListNode* mergedList = dummy->next;
-        delete dummy;
-        return mergedList;
+        ListNode* mergedlist = Newlist->next;
+        Newlist->next=nullptr;
+        delete Newlist;
+        return mergedlist;
     }
 };
